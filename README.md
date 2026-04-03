@@ -4,17 +4,13 @@ Praktikum ini berisi tutorial atau pengenalan framework codeigniter untuk mengem
 
 ## Praktikum 1
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Untuk langkah awal kita akan mempersiapkan alat dan bahan yang diperlukan untuk praktikum ini.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+### Alat dan bahan
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
-
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+* Visual Studio code [link download](https://code.visualstudio.com/download)
+* XAMPP [Link download](https://www.apachefriends.org/download.html)
+* Composer [Link download](https://getcomposer.org/download/)
 
 ## Installation & updates
 
