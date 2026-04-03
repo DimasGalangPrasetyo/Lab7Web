@@ -26,14 +26,12 @@ Tampilan XAMPP setelah diunduh dan berhasil dinstall atau XAMPP control panel
 Langkah pertama adalah mempersiapkan XAMPP agar framework dapat digunakan. Ada beberapa ekstensi yang perlu diaktifkan sebelum framework digunakan, untuk mengaktifkannya kita perlu menuju ke **Config > php.ini**
 <img width="1366" height="768" alt="xampp setup" src="https://github.com/user-attachments/assets/6f3211d3-5207-4429-8406-764b8ac66f9c" />
 
-
+---
 
 Hapus tanda ";" yang berada didepan ekstensi untuk mengaktifkan, aktifkan ekstensi yang diperlukan untuk kebutuhan framework
 <img width="1366" height="768" alt="php ini" src="https://github.com/user-attachments/assets/9e497b4e-c94a-4d27-acb5-13793e33c012" />
 
-
-
-
+---
 
 ## Installation & updates
 
