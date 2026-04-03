@@ -12,6 +12,7 @@ unduh dan install alat dan bahan terlebih dahulu
 * Visual Studio code [link download](https://code.visualstudio.com/download)
 * XAMPP [Link download](https://www.apachefriends.org/download.html)
 * Composer [Link download](https://getcomposer.org/download/)
+* 
 
 
 ### Langkah-langkah praktikum
@@ -39,6 +40,27 @@ composer create-project codeigniter4/appstarter nama-proyek
 ```
 Tunggu hingga proses instalasi selesai dan framework siap
 <img width="1365" height="767" alt="install ci4 dari composer" src="https://github.com/user-attachments/assets/9382a122-e821-4b8f-8e61-91a242dc3e71" />
+
+---
+#### Mengaktifkan mode debugging
+Ini adalah fitur yang disediakan oleh CodeIgniter 4 untuk mempermudah memperbaiki error pada code
+<img width="1321" height="692" alt="tanpa mode debugging" src="https://github.com/user-attachments/assets/fc234d77-3d1c-4ab7-ba6d-1dcaf252060a" />
+
+---
+Untuk mengaktifkannya kalian perlu ubah nama file **env** menjadi **.env**. Jika sudah kalian buka lalu cari CI_ENVIRINMENT ubah menjadi development. Mak hasilnya akan menunjukkan pesan error jika tejadi anomali pada code
+<img width="1321" height="692" alt="mode debugging" src="https://github.com/user-attachments/assets/25e730fc-b161-4527-b4ac-559eedef43b0" />
+
+---
+#### Memahami MVC
+Apa itu MVC? MVC adalah kepanjangan dari Model, View dan Controller. Mereka ini adalah arsitektur atau pondasi utama dalam pengembagan aplikasi, tugas nya adalah memisahkan code berdasarkan logic controll, model data, dan tampilan.
+
+* Model
+Merupakan kode program yang isinya pemodelan data. Biasanya berupa data daei database
+* View
+View menangani bagian depan atau tampilan program
+* Controller
+Berisi code program yang berkaitan dengan logic proses. Bisa dibilang disinilah otak dari sebuah proses program
+
 
 
 
