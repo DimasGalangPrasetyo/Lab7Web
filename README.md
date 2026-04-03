@@ -7,10 +7,19 @@ Praktikum ini berisi tutorial atau pengenalan framework codeigniter untuk mengem
 Untuk langkah awal kita akan mempersiapkan alat dan bahan yang diperlukan untuk praktikum ini.
 
 ### Alat dan bahan
+unduh dan install alat dan bahan terlebih dahulu
 
 * Visual Studio code [link download](https://code.visualstudio.com/download)
 * XAMPP [Link download](https://www.apachefriends.org/download.html)
 * Composer [Link download](https://getcomposer.org/download/)
+
+### Langkah-langkah praktikum
+setelah alat dan bahan selesai diinstall selanjutnya adalah mempersiapkannya
+
+#### Persiapan XAMPP
+Tampilan XAMPP setelah diunduh dan berhasil dinstall
+<img width="1366" height="768" alt="xampp setup" src="https://github.com/user-attachments/assets/6f3211d3-5207-4429-8406-764b8ac66f9c" />
+
 
 ## Installation & updates
 
