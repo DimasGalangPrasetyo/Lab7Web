@@ -32,6 +32,9 @@ Hapus tanda ";" yang berada didepan ekstensi untuk mengaktifkan, aktifkan eksten
 <img width="1366" height="768" alt="php ini" src="https://github.com/user-attachments/assets/9e497b4e-c94a-4d27-acb5-13793e33c012" />
 
 ---
+####Instalasi CodeIgniter 4
+
+
 
 ## Installation & updates
 
