@@ -62,7 +62,8 @@ View menangani bagian depan atau tampilan program
 Berisi code program yang berkaitan dengan logic proses. Bisa dibilang disinilah otak dari sebuah proses program
 
 
-
+#### Routing
+Routing berfungsi untuk mengatur jalur atau rute dari request yang akan digunakan pada program aplikasi. Roiting juga yang menentukan controller mana yang bisa menerima request.
 
 ## Installation & updates
 
