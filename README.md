@@ -13,6 +13,7 @@ unduh dan install alat dan bahan terlebih dahulu
 * XAMPP [Link download](https://www.apachefriends.org/download.html)
 * Composer [Link download](https://getcomposer.org/download/)
 
+
 ### Langkah-langkah praktikum
 setelah alat dan bahan selesai diinstall selanjutnya adalah mempersiapkannya
 
@@ -27,6 +28,7 @@ Langkah pertama adalah mempersiapkan XAMPP agar framework dapat digunakan. Ada b
 
 Hapus tanda ";" yang berada didepan ekstensi untuk mengaktifkan, aktifkan ekstensi yang diperlukan untuk kebutuhan framework
 <img width="1366" height="768" alt="php ini" src="https://github.com/user-attachments/assets/9e497b4e-c94a-4d27-acb5-13793e33c012" />
+
 
 
 ## Installation & updates
