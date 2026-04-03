@@ -21,7 +21,7 @@ setelah alat dan bahan selesai diinstall selanjutnya adalah mempersiapkannya
 Tampilan XAMPP setelah diunduh dan berhasil dinstall atau XAMPP control panel
 <img width="1366" height="768" alt="tampilan xampp" src="https://github.com/user-attachments/assets/aaf5f778-a4f6-49c5-84a9-3d565b6c026e" />
 
-
+---
 
 Langkah pertama adalah mempersiapkan XAMPP agar framework dapat digunakan. Ada beberapa ekstensi yang perlu diaktifkan sebelum framework digunakan, untuk mengaktifkannya kita perlu menuju ke **Config > php.ini**
 <img width="1366" height="768" alt="xampp setup" src="https://github.com/user-attachments/assets/6f3211d3-5207-4429-8406-764b8ac66f9c" />
