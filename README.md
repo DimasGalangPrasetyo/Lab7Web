@@ -229,7 +229,22 @@ class Artikel extends BaseController
  $artikel = $model->findAll();
  return view('artikel/index', compact('artikel', 'title'));
  }
+ public function view($slug)
+ {
+ $model = new ArtikelModel();
+ $artikel = $model->where([
+ 'slug' => $slug
+ ])->first();
+ // Menampilkan error apabila data tidak ada.
+ if (!$artikel)
+ {
+ throw PageNotFoundException::forPageNotFound();
+ }
+ $title = $artikel['judul'];
+ return view('artikel/detail', compact('artikel', 'title'));
+ }
 }
+
 ```
 
 ### Membuat view
@@ -238,7 +253,7 @@ sekarang agar model dan controller bisa terlihat fungsinya kita buat viewnya. Bu
 <?= $this->include('template/header'); ?>
 <?php if($artikel): foreach($artikel as $row): ?>
 <article class="entry">
- <h2<a href="<?= base_url('/artikel/' . $row['slug']);?>"><?=
+ <h2><a href="<?= base_url('/artikel/' . $row['slug']);?>"><?=
 $row['judul']; ?></a>
 </h2>
  <img src="<?= base_url('/gambar/' . $row['gambar']);?>" alt="<?=
@@ -253,6 +268,215 @@ $row['judul']; ?>">
 <?php endif; ?>
 <?= $this->include('template/footer'); ?>
 ```
+<img width="1321" height="692" alt="modul_praktikum2" src="https://github.com/user-attachments/assets/eff499db-adbc-42d0-a9af-67d3ce7cfa9c" />
+
+---
+
+Belum ada berita atau belum ada isi yang bisa ditampilkan. Kita isi dulu agar menampilkan berita atau artikel, buka kembali phpmyadmin, buka database lab_ci4, buka tabel artikel, pilih sql pada menu diatas
+```
+INSERT INTO artikel (judul, isi, slug) VALUE
+('Artikel pertama', 'dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah
+menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak
+yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk
+menjadi sebuah buku contoh huruf.', 'artikel-pertama'),
+('Artikel kedua', 'Tidak seperti anggapan banyak orang, Lorem Ipsum
+bukanlah teks-teks yang diacak. Ia berakar dari sebuah naskah sastra latin
+klasik dari era 45 sebelum masehi, hingga bisa dipastikan usianya telah
+mencapai lebih dari 2000 tahun.', 'artikel-kedua');
+```
+refresh halaman, sekarang berita akan ditampilkan berdasarkan isi yang dimasukkan tadi. Klo error berarti kalian ada typo dipenamaanya
+<img width="1321" height="692" alt="sudah diisi" src="https://github.com/user-attachments/assets/5f9e693d-582a-4da3-9a8a-af45df96b123" />
+
+---
+
+### Buat view tampilan detail artikel
+Buat detail.php pada direktori app/views/artikel
+```
+<?= $this->include('template/header'); ?>
+<article class="entry">
+ <h2><?= $artikel['judul']; ?></h2>
+ <img src="<?= base_url('/gambar/' . $artikel['gambar']);?>" alt="<?=
+$artikel['judul']; ?>">
+ <p><?= $artikel['isi']; ?></p>
+</article>
+<?= $this->include('template/footer'); ?>
+```
+
+### Menambahkan routing
+tambahkan routing atau jalur untuk halaman detail
+```
+$routes->get('/artikel/(:any)', 'Artikel::view/$1');
+```
+<img width="1321" height="692" alt="detail artikel" src="https://github.com/user-attachments/assets/2931f50c-58d8-48db-bc02-ee19a8a8850c" />
+
+---
+
+### Membuat crud admin
+buat method baru untuk admin pada controller artikel
+```
+public function admin_index()
+ {
+ $title = 'Daftar Artikel';
+ $model = new ArtikelModel();
+ $artikel = $model->findAll();
+ return view('artikel/admin_index', compact('artikel', 'title'));
+ }
+```
+
+kemudian buat admin_index.php untuk tampilan admin pada direktori app/views/artikel
+```
+<?= $this->include('template/header'); ?>
+<table class="table">
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Judul</th>
+ <th>Status</th>
+ <th>AKsi</th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php if($artikel): foreach($artikel as $row): ?>
+ <tr>
+ <td><?= $row['id']; ?></td>
+ <td>
+ <b><?= $row['judul']; ?></b>
+ <p><small><?= substr($row['isi'], 0, 50); ?></small></p>
+ </td>
+ <td><?= $row['status']; ?></td>
+ <td>
+ <a class="btn" href="<?= base_url('/admin/artikel/edit/' .
+$row['id']);?>">Ubah</a>
+ <a class="btn btn-danger" onclick="return confirm('Yakin
+menghapus data?');" href="<?= base_url('/admin/artikel/delete/' .
+$row['id']);?>">Hapus</a>
+ </td>
+ </tr>
+ <?php endforeach; else: ?>
+ <tr>
+ <td colspan="4">Belum ada data.</td>
+ </tr>
+ <?php endif; ?>
+ </tbody>
+ <tfoot>
+ <tr>
+ <th>ID</th>
+ <th>Judul</th>
+ <th>Status</th>
+ <th>AKsi</th>
+ </tr>
+ </tfoot>
+</table>
+<?= $this->include('template/footer'); ?>
+```
+kemudian tambahkan routingnya
+```
+$routes->group('admin', function($routes) {
+$routes->get('artikel', 'Artikel::admin_index');
+$routes->add('artikel/add', 'Artikel::add');
+$routes->add('artikel/edit/(:any)', 'Artikel::edit/$1');
+$routes->get('artikel/delete/(:any)', 'Artikel::delete/$1');
+});
+```
+
+<img width="1321" height="692" alt="admin crud" src="https://github.com/user-attachments/assets/84555520-54c3-412e-b98f-8b0aa6e6a673" />
+
+---
+sekarag buat untuk menambahkan berita, tambahkan di controller artikel
+```
+public function add()
+ {
+ // validasi data.
+ $validation = \Config\Services::validation();
+ $validation->setRules(['judul' => 'required']);
+ $isDataValid = $validation->withRequest($this->request)->run();
+ if ($isDataValid)
+ {
+ $artikel = new ArtikelModel();
+ $artikel->insert([
+ 'judul' => $this->request->getPost('judul'),
+ 'isi' => $this->request->getPost('isi'),
+ 'slug' => url_title($this->request->getPost('judul')),
+ ]);
+ return redirect('admin/artikel');
+ }
+ $title = "Tambah Artikel";
+ return view('artikel/form_add', compact('title'));
+ }
+```
+lalu, buat viewnya add.php pada direktori app/view/artikel
+```
+<?= $this->include('template/admin_header'); ?>
+<h2><?= $title; ?></h2>
+<form action="" method="post">
+ <p>
+ <input type="text" name="judul">
+ </p>
+ <p>
+ <textarea name="isi" cols="50" rows="10"></textarea>
+ </p>
+ <p><input type="submit" value="Kirim" class="btn btn-large"></p>
+</form>
+<?= $this->include('template/admin_footer'); ?>
+```
+
+<img width="1321" height="692" alt="tambah artikel" src="https://github.com/user-attachments/assets/28c4d2cc-0ee9-499f-b336-f9ce694e5484" />
+
+---
+
+sekarang crud ubah data, tambahkan pada controller artikel
+```
+public function edit($id)
+ {
+ $artikel = new ArtikelModel();
+ // validasi data.
+ $validation = \Config\Services::validation();
+ $validation->setRules(['judul' => 'required']);
+ $isDataValid = $validation->withRequest($this->request)->run();
+ if ($isDataValid)
+ {
+ $artikel->update($id, [
+ 'judul' => $this->request->getPost('judul'),
+ 'isi' => $this->request->getPost('isi'),
+ ]);
+ return redirect('admin/artikel');
+ }
+ // ambil data lama
+ $data = $artikel->where('id', $id)->first();
+ $title = "Edit Artikel";
+ return view('artikel/edit', compact('title', 'data'));
+ }
+```
+sekarang buat viewnya edit.php pada direktori app/views/artikel
+```
+<?= $this->include('template/header'); ?>
+<h2><?= $title; ?></h2>
+<form action="" method="post">
+ <p>
+ <input type="text" name="judul" value="<?= $data['judul'];?>" >
+ </p>
+ <p>
+ <textarea name="isi" cols="50" rows="10"><?=
+$data['isi'];?></textarea>
+ </p>
+ <p><input type="submit" value="Kirim" class="btn btn-large"></p>
+</form>
+<?= $this->include('template/footer'); ?>
+```
+
+<img width="1321" height="692" alt="edit artikel" src="https://github.com/user-attachments/assets/561c7801-e7e3-4697-8552-df9e108267fd" />
+
+---
+tambahkan method untuk menghapus data di controller artikel
+```
+public function delete($id)
+ {
+ $artikel = new ArtikelModel();
+ $artikel->delete($id);
+ return redirect('admin/artikel');
+ }
+```
+
 
 `index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
 for better security and separation of components.
