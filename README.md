@@ -169,21 +169,90 @@ Hasil akan menampilkan halaman ini
 ---
 
 
-## Installation & updates
+## Praktikum 2
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+Pada praktikum 2 ini kita akan membuat database dan tabel serta menghubungkannya menggunakan .env
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Kita juga akan menambahkan atau menyesuaikan MVC dan routing yang sudah kita buat kemarin, juga membuat crud admin
 
-## Setup
+### Membuat database & Tabel
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+buka control panel xampp, lalu pada menu control panel start atau jalankan apche dan mysql. Lalu tekan admin pada pilihan menu mysql, tunggu sebentar dan akan terbuka phpmyadmin dibrowser. Selanjutnya pilih sql pada menu diatas phpmyadmin lalu ketik
+```
+CREATE DATABASE lab_ci4;
+```
+Kemudian database akan dibuat dan akan muncul disidebar menu, pilih database lalu pilih kembali sql pada menu diatas kemudian ketik
+```
+CREATE TABLE artikel (
+ id INT(11) auto_increment,
+ judul VARCHAR(200) NOT NULL,
+ isi TEXT,
+ gambar VARCHAR(200),
+ status TINYINT(1) DEFAULT 0,
+ slug VARCHAR(200),
+ PRIMARY KEY(id)
+);
+```
+Tabel sudah dibuat, sekarang saatnya menghubungkan menggunakan .env. Buka kembali project Praktikum_CI4 di vs code, buka file .env lalu hapus tanda pagar (#) pada bagian database dan isi kolom sesuai database yang dibuat
+<img width="389" height="149" alt="menghubungkan database" src="https://github.com/user-attachments/assets/35926470-07a5-4ef8-b169-0584439570e7" />
 
-## Important Change with index.php
+---
+
+### Membuat model
+Buat artikel.php pada dirktori app/models. Pastikam penamaan dalam model sesuai dengan penamaan pada tabel
+```
+<?php
+namespace App\Models;
+use CodeIgniter\Model;
+class ArtikelModel extends Model
+{
+ protected $table = 'artikel';
+ protected $primaryKey = 'id';
+ protected $useAutoIncrement = true;
+ protected $allowedFields = ['judul', 'isi', 'status', 'slug',
+'gambar'];
+}
+```
+
+### Membuat controller
+Sekarang kita buat controllernya, buat artikel.php pada direktori app/controller. Jangan lupa masukkan model yang sudah dibuat tadi
+```
+<?php
+namespace App\Controllers;
+use App\Models\ArtikelModel;
+class Artikel extends BaseController
+{
+ public function index()
+ {
+ $title = 'Daftar Artikel';
+ $model = new ArtikelModel();
+ $artikel = $model->findAll();
+ return view('artikel/index', compact('artikel', 'title'));
+ }
+}
+```
+
+### Membuat view
+sekarang agar model dan controller bisa terlihat fungsinya kita buat viewnya. Buat folder artikel di app/views, lalu buat index.php pada direktori app/views/artikel
+```
+<?= $this->include('template/header'); ?>
+<?php if($artikel): foreach($artikel as $row): ?>
+<article class="entry">
+ <h2<a href="<?= base_url('/artikel/' . $row['slug']);?>"><?=
+$row['judul']; ?></a>
+</h2>
+ <img src="<?= base_url('/gambar/' . $row['gambar']);?>" alt="<?=
+$row['judul']; ?>">
+ <p><?= substr($row['isi'], 0, 200); ?></p>
+</article>
+<hr class="divider" />
+<?php endforeach; else: ?>
+<article class="entry">
+ <h2>Belum ada data.</h2>
+</article>
+<?php endif; ?>
+<?= $this->include('template/footer'); ?>
+```
 
 `index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
 for better security and separation of components.
