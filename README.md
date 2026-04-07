@@ -547,7 +547,52 @@ nunc pretium ac.</p>
 ```
 
 ### Modifikasi file home
-Buka app/
+Buka app/views/home.php
+```
+<?= $this->extend('layout/main') ?>
+<?= $this->section('content') ?>
+<h1><?= $title; ?></h1>
+<hr>
+<p><?= $content; ?></p>
+<?= $this->endSection() ?>
+```
+
+### Menampilkan data dinamis menggunakan cells
+View Cell adalah fitur yang memungkinkan pemanggilan tampilan dalam bentuk komponen
+yang dapat digunakan ulang. Cocok digunakan untuk elemen-elemen yang sering muncul di
+berbagai halaman seperti sidebar, widget, atau menu navigasi
+
+
+### Membuat class view cell
+Buat folder Cells pada direktori app/
+Buat ArtikelTerkini.php di app/Cells
+```
+<?php
+namespace App\Cells;
+use CodeIgniter\View\Cell;
+use App\Models\ArtikelModel;
+class ArtikelTerkini extends Cell
+{
+public function render()
+{
+$model = new ArtikelModel();
+$artikel = $model->orderBy('created_at', 'DESC')->limit(5)->findAll();
+return view('components/artikel_terkini', ['artikel' => $artikel]);
+}
+}
+```
+
+### Buat view untuk view cell
+buat folder components pada direktori app/views, lalu buat artikel_terkini.php didalamnya
+```
+<h3>Artikel Terkini</h3>
+<ul>
+<?php foreach ($artikel as $row): ?>
+<li><a href="<?= base_url('/artikel/' . $row['slug']) ?>"><?=
+$row['judul'] ?></a></li>
+<?php endforeach; ?>
+</ul>
+```
 
 This repository is a "distribution" one, built by our release preparation script.
 Problems with it can be raised on our forum, or as issues in the main repository.
