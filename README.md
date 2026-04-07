@@ -491,20 +491,63 @@ public function delete($id)
 ```
 
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## Praktikum 3
+Pada praktikum kali ini kita akan memaksimalkan pemahaman layout, pada praktikum sebelumnya kita sudah membuat tamplate header.php dan footer.php, lalu memanggilnya ke halaman about.php dll menggunakan include. Kali ini kita akan kembali menggunakan view layput dan view cell untuk mempermudah pembuatan halaman atau tampilan
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### Membuat layout utama
+Buat folder layout pada direktori app/views lalu buat file main.php
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title><?= $title ?? 'My Website' ?></title>
+<link rel="stylesheet" href="<?= base_url('/style.css');?>">
+</head>
+<body>
+<div id="container">
+<header>
+<h1>Layout Sederhana</h1>
+</header>
+<nav>
+<a href="<?= base_url('/');?>" class="active">Home</a>
+<a href="<?= base_url('/artikel');?>">Artikel</a>
+<a href="<?= base_url('/about');?>">About</a>
+<a href="<?= base_url('/contact');?>">Kontak</a>
+</nav>
+<section id="wrapper">
+<section id="main">
+    <?= $this->renderSection('content') ?>
+</section>
+<aside id="sidebar">
+<?= view_cell('App\\Cells\\ArtikelTerkini::render') ?>
+<div class="widget-box">
+<h3 class="title">Widget Header</h3>
+<ul>
+<li><a href="#">Widget Link</a></li>
+<li><a href="#">Widget Link</a></li>
+</ul>
+</div>
+<div class="widget-box">
+<h3 class="title">Widget Text</h3>
+<p>Vestibulum lorem elit, iaculis in nisl volutpat,
+malesuada tincidunt arcu. Proin in leo fringilla,
+vestibulum mi porta,
+faucibus felis. Integer pharetra est nunc, nec pretium
+nunc pretium ac.</p>
+</div>
+</aside>
+</section>
+<footer>
+<p>&copy; 2021 - Universitas Pelita Bangsa</p>
+</footer>
+</div>
+</body>
+</html>
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### Modifikasi file home
+Buka app/
 
 This repository is a "distribution" one, built by our release preparation script.
 Problems with it can be raised on our forum, or as issues in the main repository.
