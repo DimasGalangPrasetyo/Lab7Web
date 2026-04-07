@@ -20,15 +20,18 @@ setelah alat dan bahan selesai diinstall selanjutnya adalah mempersiapkannya
 
 #### Persiapan XAMPP
 Tampilan XAMPP setelah diunduh dan berhasil dinstall atau XAMPP control panel
-<img width="1366" height="768" alt="tampilan xampp" src="https://github.com/user-attachments/assets/aaf5f778-a4f6-49c5-84a9-3d565b6c026e" />
+<img width="1366" height="768" alt="tampilan xampp" src="https://github.com/user-attachments/assets/22e2a96b-df2b-46f4-bd9e-417a7d53f7f3" />
+
 
 ---
 Langkah pertama adalah mempersiapkan XAMPP agar framework dapat digunakan. Ada beberapa ekstensi yang perlu diaktifkan sebelum framework digunakan, untuk mengaktifkannya kita perlu menuju ke **Config > php.ini**
-<img width="1366" height="768" alt="xampp setup" src="https://github.com/user-attachments/assets/6f3211d3-5207-4429-8406-764b8ac66f9c" />
+<img width="1366" height="768" alt="xampp setup" src="https://github.com/user-attachments/assets/3d0fe253-9ded-4851-b2e6-7e05cfaca2d2" />
+
 
 ---
 Hapus tanda ";" yang berada didepan ekstensi untuk mengaktifkan, aktifkan ekstensi yang diperlukan untuk kebutuhan framework
-<img width="1366" height="768" alt="php ini" src="https://github.com/user-attachments/assets/9e497b4e-c94a-4d27-acb5-13793e33c012" />
+<img width="1366" height="768" alt="php ini" src="https://github.com/user-attachments/assets/a46087c8-bcf7-448a-b424-18220e024989" />
+
 
 ---
 #### Instalasi CodeIgniter 4
@@ -39,16 +42,19 @@ Setelah persiapan XAMPP selesai sekarang saat nya memepersiapkan framework. Ada 
 composer create-project codeigniter4/appstarter nama-proyek
 ```
 Tunggu hingga proses instalasi selesai dan framework siap
-<img width="1365" height="767" alt="install ci4 dari composer" src="https://github.com/user-attachments/assets/9382a122-e821-4b8f-8e61-91a242dc3e71" />
+<img width="1365" height="767" alt="install ci4 dari composer" src="https://github.com/user-attachments/assets/95b1072b-1a29-46b6-bc40-7117aa0d320b" />
+
 
 ---
 #### Mengaktifkan mode debugging
 Ini adalah fitur yang disediakan oleh CodeIgniter 4 untuk mempermudah memperbaiki error pada code
-<img width="1321" height="692" alt="tanpa mode debugging" src="https://github.com/user-attachments/assets/fc234d77-3d1c-4ab7-ba6d-1dcaf252060a" />
+<img width="1321" height="692" alt="tanpa mode debugging" src="https://github.com/user-attachments/assets/906c2b16-dbff-49c6-b90b-497e33004442" />
+
 
 ---
-Untuk mengaktifkannya kalian perlu ubah nama file **env** menjadi **.env**. Jika sudah kalian buka lalu cari CI_ENVIRINMENT ubah menjadi development. Mak hasilnya akan menunjukkan pesan error jika tejadi anomali pada code
-<img width="1321" height="692" alt="mode debugging" src="https://github.com/user-attachments/assets/25e730fc-b161-4527-b4ac-559eedef43b0" />
+Untuk mengaktifkannya kalian perlu ubah nama file **env** menjadi **.env**. Jika sudah kalian buka lalu cari CI_ENVIRINMENT ubah menjadi development. Maka hasilnya akan menunjukkan pesan error jika tejadi anomali pada code
+<img width="1321" height="692" alt="mode debugging" src="https://github.com/user-attachments/assets/8509dcc4-e16c-4b17-b4ff-91c1f2b45cdd" />
+
 
 ---
 #### Memahami MVC
@@ -164,7 +170,8 @@ masih di tempat yang sama app/views buat file about.php
 
 
 Hasil akan menampilkan halaman ini
-<img width="1321" height="692" alt="Hasil praktikum 1" src="https://github.com/user-attachments/assets/63cc9a27-3517-4330-9693-3032453736c8" />
+<img width="1321" height="692" alt="Hasil praktikum 1" src="https://github.com/user-attachments/assets/97d5f0f1-9ae3-441b-8c85-d86a2640aaed" />
+
 
 ---
 
@@ -194,7 +201,8 @@ CREATE TABLE artikel (
 );
 ```
 Tabel sudah dibuat, sekarang saatnya menghubungkan menggunakan .env. Buka kembali project Praktikum_CI4 di vs code, buka file .env lalu hapus tanda pagar (#) pada bagian database dan isi kolom sesuai database yang dibuat
-<img width="389" height="149" alt="menghubungkan database" src="https://github.com/user-attachments/assets/35926470-07a5-4ef8-b169-0584439570e7" />
+<img width="389" height="149" alt="menghubungkan database" src="https://github.com/user-attachments/assets/73b96653-8331-4a95-813f-20eb8aada86b" />
+
 
 ---
 
@@ -268,7 +276,8 @@ $row['judul']; ?>">
 <?php endif; ?>
 <?= $this->include('template/footer'); ?>
 ```
-<img width="1321" height="692" alt="modul_praktikum2" src="https://github.com/user-attachments/assets/eff499db-adbc-42d0-a9af-67d3ce7cfa9c" />
+<img width="1321" height="692" alt="modul_praktikum2" src="https://github.com/user-attachments/assets/0138efae-9d96-4b79-b1a3-8709fc63f798" />
+
 
 ---
 
@@ -285,7 +294,8 @@ klasik dari era 45 sebelum masehi, hingga bisa dipastikan usianya telah
 mencapai lebih dari 2000 tahun.', 'artikel-kedua');
 ```
 refresh halaman, sekarang berita akan ditampilkan berdasarkan isi yang dimasukkan tadi. Klo error berarti kalian ada typo dipenamaanya
-<img width="1321" height="692" alt="sudah diisi" src="https://github.com/user-attachments/assets/5f9e693d-582a-4da3-9a8a-af45df96b123" />
+<img width="1321" height="692" alt="sudah diisi" src="https://github.com/user-attachments/assets/59adba34-a922-4912-9899-79fc4546a1b7" />
+
 
 ---
 
@@ -307,7 +317,8 @@ tambahkan routing atau jalur untuk halaman detail
 ```
 $routes->get('/artikel/(:any)', 'Artikel::view/$1');
 ```
-<img width="1321" height="692" alt="detail artikel" src="https://github.com/user-attachments/assets/2931f50c-58d8-48db-bc02-ee19a8a8850c" />
+<img width="1321" height="692" alt="detail artikel" src="https://github.com/user-attachments/assets/2a847062-b428-4734-b742-cca3e7672f87" />
+
 
 ---
 
@@ -378,8 +389,9 @@ $routes->add('artikel/edit/(:any)', 'Artikel::edit/$1');
 $routes->get('artikel/delete/(:any)', 'Artikel::delete/$1');
 });
 ```
+<img width="1321" height="692" alt="admin crud" src="https://github.com/user-attachments/assets/520a340a-e334-48c2-861a-6696865b3ca3" />
 
-<img width="1321" height="692" alt="admin crud" src="https://github.com/user-attachments/assets/84555520-54c3-412e-b98f-8b0aa6e6a673" />
+
 
 ---
 sekarag buat untuk menambahkan berita, tambahkan di controller artikel
@@ -419,8 +431,9 @@ lalu, buat viewnya add.php pada direktori app/view/artikel
 </form>
 <?= $this->include('template/admin_footer'); ?>
 ```
+<img width="1321" height="692" alt="tambah artikel" src="https://github.com/user-attachments/assets/008b5e55-4ffc-43e4-afd6-21820b15e3b1" />
 
-<img width="1321" height="692" alt="tambah artikel" src="https://github.com/user-attachments/assets/28c4d2cc-0ee9-499f-b336-f9ce694e5484" />
+
 
 ---
 
@@ -463,8 +476,8 @@ $data['isi'];?></textarea>
 </form>
 <?= $this->include('template/footer'); ?>
 ```
+<img width="1321" height="692" alt="edit artikel" src="https://github.com/user-attachments/assets/8602af10-a074-4cea-895e-56c5c5e024f2" />
 
-<img width="1321" height="692" alt="edit artikel" src="https://github.com/user-attachments/assets/561c7801-e7e3-4697-8552-df9e108267fd" />
 
 ---
 tambahkan method untuk menghapus data di controller artikel
