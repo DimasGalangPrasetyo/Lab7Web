@@ -298,27 +298,22 @@ Gambar bawaan menggunakan placeholder SVG bertema MU Forum agar aman untuk prakt
 ---
 <img width="1365" height="717" alt="ft1" src="https://github.com/user-attachments/assets/90b86965-2159-4e70-84b2-f65ce5c7eda0" />
 ---
-
 2. Gambar halaman berita
 ---
 <img width="1362" height="723" alt="ft7" src="https://github.com/user-attachments/assets/0d04298e-24e6-487a-a906-5010efd4a266" />
 ---
-
 3. Gambar halaman admin login
 ---
 <img width="1365" height="725" alt="ft3" src="https://github.com/user-attachments/assets/39df2d40-6fc2-42f2-8c27-9eb68ccebc3c" />
 ---
-
 4. Gambar dashboard admin
 ---
 <img width="1365" height="723" alt="ft4" src="https://github.com/user-attachments/assets/fa93d8fb-d974-433b-8f96-3c47717be442" />
 ---
-
 5. Gambar halaman tambah berita
 ---
 <img width="1365" height="730" alt="ft6" src="https://github.com/user-attachments/assets/2d2a2229-5540-4b68-86d5-c5146b441323" />
 ---
-
 6. Gambar halaman manajemen berita
 ---
 <img width="1365" height="724" alt="ft5" src="https://github.com/user-attachments/assets/b9dbe866-209e-4d08-a3fa-b596fea700be" />
